@@ -22,7 +22,16 @@ const client = new MongoClient(uri, {
 
 async function run() {
     try {
+        const prmsAppDB = client.db("prmsAppDB");
+        const reportColelction = prmsAppDB.collection("reports");
 
+        // GET method for collection all reports from DB
+        app.get('/', async (req, res) => {
+            const query = {};
+            const cursor = reportColelction.find(query);
+            const result = await cursor.toArray();
+            res.send(result);
+        })
 
         // Connect the client to the server	(optional starting in v4.7)
         await client.connect();
@@ -38,9 +47,9 @@ run().catch(console.dir);
 
 
 
-app.get('/', (req, res) => {
-    res.send("Welcome to the PRM App Server!");
-})
+// app.get('/', (req, res) => {
+//     res.send("Welcome to the PRM App Server!");
+// })
 
 app.listen(port, () => {
     console.log("Server is running from the Port:", port);
