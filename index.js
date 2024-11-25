@@ -35,7 +35,7 @@ async function run() {
 
         // POST method for collection all reports from DB
         app.post('/reports', async (req, res) => {
-            const reportData = req.params.body;
+            const reportData = req.body;
             const result = await reportColelction.insertOne(reportData);
             res.send(result);
         })
