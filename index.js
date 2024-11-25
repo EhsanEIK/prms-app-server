@@ -1,4 +1,4 @@
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const express = require('express');
 const app = express();
 const port = 5000;
@@ -33,10 +33,18 @@ async function run() {
             res.send(result);
         })
 
-        // POST method for collection all reports from DB
+        // POST method for saving reports to DB
         app.post('/reports', async (req, res) => {
             const reportData = req.body;
             const result = await reportColelction.insertOne(reportData);
+            res.send(result);
+        })
+
+        // DELETE method for deleting reports from DB
+        app.delete('/reports/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: new ObjectId(id) };
+            const result = await reportColelction.deleteOne(query);
             res.send(result);
         })
 
