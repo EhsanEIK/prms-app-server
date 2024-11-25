@@ -26,10 +26,17 @@ async function run() {
         const reportColelction = prmsAppDB.collection("reports");
 
         // GET method for collection all reports from DB
-        app.get('/', async (req, res) => {
+        app.get('/reports', async (req, res) => {
             const query = {};
             const cursor = reportColelction.find(query);
             const result = await cursor.toArray();
+            res.send(result);
+        })
+
+        // POST method for collection all reports from DB
+        app.post('/reports', async (req, res) => {
+            const reportData = req.params.body;
+            const result = await reportColelction.insertOne(reportData);
             res.send(result);
         })
 
@@ -47,9 +54,9 @@ run().catch(console.dir);
 
 
 
-// app.get('/', (req, res) => {
-//     res.send("Welcome to the PRM App Server!");
-// })
+app.get('/', (req, res) => {
+    res.send("Welcome to the PRM App Server!");
+})
 
 app.listen(port, () => {
     console.log("Server is running from the Port:", port);
