@@ -6,7 +6,7 @@ require('dotenv').config();
 const port = process.env.PORT | 5000;
 
 // middleware
-app.use(cors());
+app.use(cors({ origin: 'https://prms-web-app.web.app' }));
 app.use(express.json());
 
 // app.use(cors({
