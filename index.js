@@ -7,6 +7,8 @@ const port = process.env.PORT | 5000;
 
 // middleware
 app.use(cors());
+app.use(express.json());
+
 // app.use(cors({
 //     origin: [
 //         'http://localhost:3000/'
@@ -16,8 +18,6 @@ app.use(cors());
 //     res.header({ "Access-Control-Allow-Origin": "*" });
 //     next();
 // })
-
-app.use(express.json());
 
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.fbieij7.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
