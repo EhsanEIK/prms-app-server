@@ -6,14 +6,6 @@ require('dotenv').config();
 const port = process.env.PORT | 5000;
 
 // middleware
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'https://prms-web-app.web.app'); // Allow only your frontend
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); // Allowed methods
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Allowed headers
-    res.setHeader('Access-Control-Allow-Credentials', 'true'); // If credentials (cookies, etc.) are needed
-    next();
-});
-
 app.use(cors({ origin: 'https://prms-web-app.web.app' }));
 app.use(express.json());
 
