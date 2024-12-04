@@ -2,4 +2,4 @@
 2. install dotenv
 3. install vercel
 
-prmsAppDBUser:9Q9VGf5uelf3q8OD
+Server Link: https://prms-app-server-8ogqpsqc0-ehsaneiks-projects.vercel.app
